@@ -1,0 +1,37 @@
+<form class="form-horizontal form-complex">
+    <div class="control-group">
+        <!-- 메시지를 작성하는 폼 -->
+        <label class="control-label" for="kakao_message">Message</label>
+        <div class="controls">
+            <textarea name="action.kakao.param.message" id="kakao_message"></textarea>
+            <span class="help-block">
+                The chat message for the Kakao 
+                Include tokens to insert text based on search results.
+                <a href="{{SPLUNKWEB_URL_PREFIX}}/help?location=learnmore.alert.action.tokens" target="_blank"
+                   title="Splunk help">Learn More <i class="icon-external"></i></a>
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <!-- 메시지 포맷을 설정하는 부분 (plain text/html) 인데 아직 사용하지 않는다 -->
+        <label class="control-label">Message Format</label>
+        <div class="controls">
+            <label class="radio" for="kakao_message_format_plain">
+                <input id="kakao_message_format_plain" type="radio" name="action.kakao.param.message_format" value="plain" />
+                Plain Text
+            </label>
+            <label class="radio" for="kakao_message_format_html">
+                <input id="kakao_message_format_html" type="radio" name="action.kakao.param.message_format" value="html" />
+                HTML
+            </label>
+        </div>
+    </div>
+    <div class="control-group">
+        <!-- 토큰 값을 넣어 주는 부분. 이 곳에 값을 넣으면 기본 설정되어 있는 값에 덮어 쓰여진다. -->
+        <label class="control-label" for="kakao_auth_token">Auth Token</label>
+        <div class="controls">
+            <input type="text" name="action.kakao.param.auth_token" id="kakao_auth_token" placeholder="Optional"/>
+            <span class="help-block">Override the globally configured Kakao Auth Token for this alert.</span>
+        </div>
+    </div>
+</form>
