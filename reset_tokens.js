@@ -10,3 +10,4 @@ require([ 'jquery', 'splunkjs/mvc/simplexml/eventhandler' ],
                      EventHandler.unsetToken("stock_code");
         });
 });
+
