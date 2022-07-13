@@ -3,7 +3,7 @@ import requests
 
 url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
 
-access_token="uhov_AUv2mT5olZd2hsw6E9I8l2pvyary88yo73gCj11nAAAAYHxJ5ho" # 위에서 받은 접근 토큰
+access_token="NLS270EZeKFh6Pl2-NnmC387KyIZdwsD-iwV7OyvCilvuQAAAYH2PqHW" # 위에서 받은 접근 토큰
 # 사용자 토큰
 headers = {
     "Authorization": "Bearer " + access_token
