@@ -10,7 +10,7 @@ import json
 import os
 import sys
 from random import seed
-from random import randinte
+from random import randint
 import time
 import requests
 import urllib3
@@ -58,11 +58,7 @@ def genRandomCode(codebook, codes, num):
 """
 def readData(reader, codes, days=180):
     #스플렁크 SPL 문
-    splunk_query="""
-        search index=kospi {codes} earliest={days}
-        | rename Date as date
-        | chart latest(Close) as value by date, code
-    """
+    splunk_query="search index=kospi {codes} earliest={days} | rename Date as date | chart latest(Close) as value by date, code"
     code_str = " OR ".join(codes)
     days_str = "-" + str(days) + "d@"
 
@@ -75,8 +71,8 @@ HEC 를 통해 스플렁크에 결과 데이터를 저장한다.
  @host: 스플렁크 접속 서버
  @token: 스플렁크에서 발급한 접속 토근
 """
-authToken = "XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"  # @TODO 나의 토큰으로 대체
-splunkhost = "localhost" # @TODO 나의 서버 주소로 대체
+authToken = "c660819d-4bee-4407-80b6-965cb86d492a"  # @TODO 나의 토큰으로 대체
+splunkhost = "192.168.56.1" # @TODO 나의 서버 주소로 대체
 def splunkHec(host, token, data):
     url="https://" + host + ":8088/services/collector/event"
     authHeader = {'Authorization': 'Splunk ' + token}
@@ -133,7 +129,7 @@ def findBestPortpolio(reader, codebook, required_codes, num, repeat=10000):
 def verifyCode(required):
     codes = required.split(",")
     codes = [ v + ".KS" if len(v)==6  else v for v in codes]
-    return codes;
+    return codes
 
 if __name__ == "__main__":
     # 전달받는 파라미터 설정
@@ -162,12 +158,12 @@ if __name__ == "__main__":
 
     codes =[]
     if args.required:
-        codes = verifyCode(args.required);
+        codes = verifyCode(args.required)
 
     # 주식 종목 리스트 읽기
     codebook = getCodeList()
     # 스플렁크 접속 객체 생성 @TODO 나의 접속 정보로 수정
-    reader = SplunkDataReader("localhost", 8089, "my_account", "my_password")
+    reader = SplunkDataReader("192.168.56.1", 8089, "woococo", "Qwe5429sdf!")
     # 스플렁크에 접속
     reader.connect()
     #  포트 폴리오 검색 수행
